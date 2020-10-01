@@ -13,15 +13,17 @@
 
 // 思路：暴力破解，双层循环，两数相加判断。双层循环的时间复杂度 O(n^2)，时间消耗大。
 
-// var twoSum = function (nums, target) {
-//   for (let i = 0; i < nums.length; i++) {
-//     for (let j = 0; j < nums.length; j++) {
-//       if (nums[i] + nums[j] === target && i !== j) {
-//         return [i, j]
-//       }
-//     }
-//   }
-// }
+var twoSum1 = function (nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = 0; j < nums.length; j++) {
+      if (nums[i] + nums[j] === target && i !== j) {
+        return [i, j]
+      }
+    }
+  }
+}
+
+/***************************************************************************************************************** */
 
 // 思路：每当循环一个数的时候，我们可以知道需要的目标值是几（target - num = 目标值）。
 // 把目标值当做一个key，当前索引当做 value 存在一个对象里。
