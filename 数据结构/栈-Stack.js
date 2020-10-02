@@ -35,6 +35,8 @@ function Stack() {
   }
 }
 
+module.exports = Stack
+
 let stack = new Stack()
 
 stack.push(1)

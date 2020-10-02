@@ -6,4 +6,4 @@
 
 - [数据结构可视化](https://visualgo.net/zh)
 - [数据结构与算法可视化](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
-- [实现常见的数据结构](https://segmentfault.com/a/1190000020011987)
+- [实现常见的数据结构](https://haiweilian.github.io/leetcode-javascript/数据结构/数据结构.html)
