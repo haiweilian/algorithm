@@ -18,7 +18,6 @@
  */
 
 // 思路：让当前节点的指针指向上一个节点
-
 var reverseList = function (head) {
   let cur = head
   let pre = null

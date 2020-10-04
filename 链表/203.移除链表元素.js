@@ -19,7 +19,6 @@
  */
 
 // 思路：多添加一个节点，便于循环第一个，如果当前节点的下一个节点的值 等于 输入值。那就把当前节点的指针指向下一个节点的下一个节点。
-
 var removeElements = function (head, val) {
   let ele = {
     next: head,

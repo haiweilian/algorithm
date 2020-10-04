@@ -20,7 +20,6 @@
 
 // 思路：每循环一个节点，就把当前节点存起来，如果下次循环当前节点已经存在，那么起点就是当前节点。
 // 空间复杂度 O(n)
-
 var detectCycle1 = function (head) {
   let cache = new Set()
   while (head) {
@@ -43,7 +42,6 @@ var detectCycle1 = function (head) {
 // **如果不是一个圆**，那么跑的快的就会先到达终点。
 // **起点**，起点和慢点相遇就是入口。看图： <../maps/环形链表-快慢指针方式-查找入口.png>
 // 空间复杂度 O(1)
-
 var detectCycle = function (head) {
   let fast = head
   let slow = head

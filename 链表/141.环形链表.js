@@ -20,7 +20,6 @@
 
 // 思路：每循环一个节点，就把当前节点存起来，如果下次循环当前节点已经存在，那么就是环形链表。
 // 空间复杂度 O(n)
-
 var hasCycle1 = function (head) {
   let cache = new Set()
   while (head) {
@@ -42,7 +41,6 @@ var hasCycle1 = function (head) {
 // **只要是一个圆**，如操场跑步，一个人跑的快(fast)、一个人跑的慢(slow)，迟早跑的快的会追上跑的慢的(多跑了一圈)。
 // **如果不是一个圆**，那么跑的快的就会先到达终点。
 // 空间复杂度 O(1)
-
 var hasCycle = function (head) {
   let fast = head
   let slow = head

@@ -12,7 +12,6 @@
  */
 
 // 思路：暴力破解，双层循环，两数相加判断。双层循环的时间复杂度 O(n^2)，时间消耗大。
-
 var twoSum1 = function (nums, target) {
   for (let i = 0; i < nums.length; i++) {
     for (let j = 0; j < nums.length; j++) {
@@ -29,7 +28,6 @@ var twoSum1 = function (nums, target) {
 // 把目标值当做一个key，当前索引当做 value 存在一个对象里。
 // 那么下次循环的时候，当前值在对象里，那么就找到了目标值取出索引与当前索引一起返回。
 // 这次只循环了一次，时间复杂度 O(n)，空间复杂度 O(n)，典型用空间换时间。
-
 var twoSum = function (nums, target) {
   let obj = {}
   for (let i = 0; i < nums.length; i++) {
