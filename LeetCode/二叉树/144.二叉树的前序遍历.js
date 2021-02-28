@@ -27,25 +27,6 @@ var preorderTraversal1 = function (root, arr = []) {
   }
   return arr
 }
-
-/***************************************************************************************************************** */
-
-// 思路：迭代方式，创建一个存储节点的栈，先遍历左子树然后入栈，左完之后，出栈遍历右子树。
-var preorderTraversal = function (root) {
-  let result = []
-  let stack = []
-  let cur = root
-  while (cur || stack.length > 0) {
-    while (cur) {
-      result.push(cur.val)
-      stack.push(cur) // 后面要通过 cur 找它的 right
-      cur = cur.left
-    }
-    cur = stack.pop()
-    cur = cur.right
-  }
-  return result
-}
 // @lc code=end
 
 let root = {
