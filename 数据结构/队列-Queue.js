@@ -42,10 +42,11 @@ function Queue() {
 
 let queue = new Queue()
 
+queue.enqueue(0)
 queue.enqueue(1)
 queue.enqueue(2)
 queue.enqueue(3)
 queue.dequeue()
 
-console.log(queue.head())
-console.log(queue.size())
+console.log(queue.head()) // 1
+console.log(queue.size()) // 3

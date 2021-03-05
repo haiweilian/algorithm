@@ -1,6 +1,5 @@
-// 二叉树是树的一种特殊情况，每个节点最多有有两个子女，分别称为该节点的左子女和右子女，就是说，在二叉树中，不存在度大于2的节点。二叉树的子树有左右之分，次序不能颠倒，下图是一个二叉树的结构图。
-
-const Stack = require("./栈-Stack")
+// 二叉树是树的一种特殊情况，每个节点最多有有两个子女，分别称为该节点的左子女和右子女。
+// 就是说，在二叉树中，不存在度大于2的节点。二叉树的子树有左右之分，次序不能颠倒。
 
 // 树节点
 function BinTreeNode(data) {
@@ -16,9 +15,10 @@ function BinaryTree() {
 
   // 采用广义表表示的建立二叉树方法
   this.init_tree = function (string) {
-    var stack = new Stack()
+    var stack = []
     var k = 0
     var new_node = null
+
     for (var i = 0; i < string.length; i++) {
       var item = string[i]
       if (item == "#") {
@@ -37,17 +37,19 @@ function BinaryTree() {
           root = new_node
         } else if (k == 1) {
           // 左子树
-          var top_item = stack.top()
+          var top_item = stack[stack.length - 1]
           top_item.leftChild = new_node
           new_node.parentNode = top_item
         } else {
           // 右子树
-          var top_item = stack.top()
+          var top_item = stack[stack.length - 1]
           top_item.rightChild = new_node
           new_node.parentNode = top_item
         }
       }
     }
+
+    return root
   }
 
   // 获取根树
@@ -61,7 +63,7 @@ function BinaryTree() {
       return
     }
     this.in_order(node.leftChild)
-    console.log(node.data) // 中序遍历：输出在中间
+    console.log("in_order", node.data) // 中序遍历：输出在中间
     this.in_order(node.rightChild)
   }
 
@@ -70,7 +72,7 @@ function BinaryTree() {
     if (node === null) {
       return
     }
-    console.log(node.data) // 前序遍历：输出在前面
+    console.log("pre_order", node.data) // 前序遍历：输出在前面
     this.pre_order(node.leftChild)
     this.pre_order(node.rightChild)
   }
@@ -82,7 +84,7 @@ function BinaryTree() {
     }
     this.post_order(node.leftChild)
     this.post_order(node.rightChild)
-    console.log(node.data) // 后序遍历：输出在后面
+    console.log("post_order", node.data) // 后序遍历：输出在后面
   }
 
   // 返回节点数量
@@ -139,21 +141,48 @@ function BinaryTree() {
 }
 
 let binaryTree = new BinaryTree()
-binaryTree.init_tree("A(B(D,E(G,)),C(,F))#")
+let tree = binaryTree.init_tree("A(B(D,E(G,)),C(,F))#")
+console.log(tree)
+// BinTreeNode {
+//   data: 'A',
+//   leftChild: BinTreeNode {
+//     data: 'B',
+//     leftChild: BinTreeNode {
+//       data: 'D',
+//       leftChild: null,
+//       rightChild: null,
+//       parentNode: [Circular]
+//     },
+//     rightChild: BinTreeNode {
+//       data: 'E',
+//       leftChild: [BinTreeNode],
+//       rightChild: null,
+//       parentNode: [Circular]
+//     },
+//     parentNode: [Circular]
+//   },
+//   rightChild: BinTreeNode {
+//     data: 'C',
+//     leftChild: null,
+//     rightChild: BinTreeNode {
+//       data: 'F',
+//       leftChild: null,
+//       rightChild: null,
+//       parentNode: [Circular]
+//     },
+//     parentNode: [Circular]
+//   },
+//   parentNode: null
+// }
 
 let root = binaryTree.get_root()
 
 binaryTree.in_order(root) // D B G E A C F
-console.log("in_order end")
 binaryTree.pre_order(root) // A B D E G C F
-console.log("pre_order end")
 binaryTree.post_order(root) // D G E B F C A
-console.log("post_order end")
 
 console.log(binaryTree.size()) // 7
 
 console.log(binaryTree.height()) // 4
 
 console.log(binaryTree.find("B"))
-console.log(binaryTree.find("F"))
-console.log(binaryTree.find("I"))

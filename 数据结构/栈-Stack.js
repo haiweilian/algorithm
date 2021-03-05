@@ -35,14 +35,13 @@ function Stack() {
   }
 }
 
-module.exports = Stack
-
 let stack = new Stack()
 
+stack.push(0)
 stack.push(1)
 stack.push(2)
 stack.push(3)
 stack.pop()
 
-console.log(stack.top())
-console.log(stack.size())
+console.log(stack.top()) // 2
+console.log(stack.size()) // 3

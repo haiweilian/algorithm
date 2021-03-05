@@ -11,18 +11,13 @@
  * @return {number[]}
  */
 var twoSum = function (nums, target) {
-  let obj = {}
   for (let i = 0; i < nums.length; i++) {
-    let num = nums[i]
-
-    // 如果当前值在目标，就找到了结果，取出索引
-    if (num in obj) {
-      return [obj[num], i]
+    for (let j = 0; j < nums.length; j++) {
+      // 双层循环，两数相加判断 && 判断不是同一个元素
+      if (nums[i] + nums[j] === target && i != j) {
+        return [i, j]
+      }
     }
-
-    // 如果没找到，就把目标值当成 key，当前索引当成 value，存进对象里。
-    // 如果此次循环是 2, 那么我的目标值就是 7 索引是 1
-    obj[target - num] = i
   }
 }
 // @lc code=end
