@@ -1,39 +1,36 @@
 /*
- * @lc app=leetcode.cn id=203 lang=javascript
+ * @lc app=leetcode.cn id=83 lang=javascript
  *
- * [203] 移除链表元素
+ * [83] 删除排序链表中的重复元素
  */
 
 // @lc code=start
 /**
  * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
  * }
  */
 /**
  * @param {ListNode} head
- * @param {number} val
  * @return {ListNode}
  */
-var removeElements = function (head, val) {
-  // 定义一个哨兵节点，便于遍历
-  let ele = { next: head }
-  let cur = ele
+var deleteDuplicates = function (head) {
+  if (!head || !head.next) return head
+
+  let cur = head
 
   while (cur && cur.next) {
-    // 依次判断下一个节点的值是不是等于输入值
-    if (cur.next.val === val) {
-      // 让当前节点的指针指向下一个节点的下一个节点
+    // 如果当前节点的值 与 下一个节点一致，那么就让当前节点的指针指向下个节点的下一个节点，从而跳过重复的下一个节点。
+    if (cur.val === cur.next.val) {
       cur.next = cur.next.next
     } else {
       cur = cur.next
     }
   }
 
-  // 去除哨兵节点返回
-  return ele.next
+  return head
 }
 // @lc code=end
 
@@ -43,12 +40,15 @@ var removeElements = function (head, val) {
 let ListNode = {
   val: 1,
   next: {
-    val: 2,
+    val: 1,
     next: {
-      val: 3,
+      val: 2,
       next: {
-        val: 2,
-        next: null,
+        val: 3,
+        next: {
+          val: 3,
+          next: null,
+        },
       },
     },
   },
@@ -64,4 +64,4 @@ function print(head) {
   return `长度为 ${link.length} : 值为 ${link.join("->")}`
 }
 
-console.log(print(removeElements(ListNode, 2))) // 长度为 2 : 值为 1->3
+console.log(print(deleteDuplicates(ListNode))) // 长度为 3 : 值为 1->2->3
